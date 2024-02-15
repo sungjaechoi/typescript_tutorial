@@ -45,10 +45,17 @@ console.log(yujin2); // name : '코드팩토리'
 // 3. 객체에서 조금더 구체화된 타입으로 유추되도록 하고 싶은 경우 '캐스팅(타입 단언)'을 사용한다.
 // 캐스팅(타입 단언) -> 특정 타입으로 지정해 주느것
 // as const 캐스팅 -> 특정한 값들의 타입으로 추론 할수 있다
+// 전체적인 타입 단언이 필요한 경우
 const yujin3 = {
-  name: "안유진" as const,
-  year: 2003 as const,
-};
+  name: "안유진",
+  year: 2003,
+} as const;
+
+// 부분적인 타입단언이 필요한 경우
+// const yujin3 = {
+//   name: "안유진" as const,
+//   year: 2003 as const,  
+// }
 
 // 4. 캐스팅으로 객체의 각 key의 값이 구체화 되었기 때문에 값이 재할당이 불가능 하다.
 // yujin3.name = '코드팩토리'
@@ -56,6 +63,15 @@ const yujin3 = {
 // 5. "yujin3.name" 작성 시 마우스를 올려보면 구체화된 타입을 추론 받을수 있다.
 console.log(yujin3.name);
 console.log(yujin2.name);
+
+
+
+const deepCopy = (data:any) => {
+  data = JSON.parse(JSON.stringify(data))
+  return data
+}
+
+const a = deepCopy(yujin3) as typeof yujin3
 
 /**
  * Array
@@ -72,7 +88,9 @@ let numbers = [1, 2, 3, 4, 5];
 const number = numbers[0];
 
 // 2-1. "let numbersAndString: (string | number)[]"로 타입 추론
-let numbersAndString = [1, 2, 3, "4", "5", "6"];
+type Number = "1"|"2"|"3"
+let numbersAndString:(number|Number)[] = [1, 2, 3];
+numbersAndString.push('3')
 
 // 2-2. numbersAndString의 [0]번째 원소는 number 타입이 지만 타입스크립트는 거기까지는 추론 하지 않고
 //numbersAndString이 '(number|string)[]'로 타입이 추론 되었기 떄문에 원소 할당 시 nos의 타입은 'number|string'로 추론된다.

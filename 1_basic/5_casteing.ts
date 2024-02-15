@@ -25,7 +25,7 @@ let stringVar = sampleNumber as string
 
 //5. TS에서 casting을 사용 하면 JS 컴파일시 적용 되지 않기 떄문에 
 //JS는 'sampleNumber'의 타입을 number로 출력 한다.
-console.log(typeof (sampleNumber as string)) 
+console.log(typeof (sampleNumber as string))
 
 //6. JS에서는 캐스팅을 신경 쓰지 않으나 TS에서는 캐스팅 사용시 
 //해당 타입이 문자열이 인것 처럼 문자열에 사용가능한 메서드들이 자동으로 출력된다.
@@ -36,7 +36,7 @@ console.log(typeof (sampleNumber as string))
 let number = 5;
 
 //7-1. number에 toUpperCase() 메서드를 사용하게되면 오류가 발생한다.
-//console.log(number.toUpperCase())
+// console.log(number.toUpperCase())
 
 //7-2. any타입으로 캐스팅을 하게 되면 오류의 기능을 상실한다. 
 console.log((number as any).toUpperCase())

@@ -1,11 +1,9 @@
-// tsc - Ts 컴파일러 
-// 터미널 tsc 실행 시, TS파일이 변환된 js파일이 생성
-// any와 unknown 남발 시 컴파일 이후 안전(?)을 보장할수 없다
 "use strict";
 /**
  * JS에 존재하는 타입
  * 7개의 타입
  */
+Object.defineProperty(exports, "__esModule", { value: true });
 const stringVar = "string";
 const numberVar = 3;
 const bigIntVar = BigInt(9999);

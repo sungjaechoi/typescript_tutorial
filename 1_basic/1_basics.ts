@@ -27,13 +27,14 @@ let testString: string = anyVar;
 let testBolean: boolean = anyVar;
 
 // unknown - 알 수 없는 타입 (비교적 최근에 생김)
+// ?? 이 타입을 나도잘 모르겠다 -> 씀
 let unknownType: unknown;
-unknownType = 100;
+unknownType = 100 as number;
 unknownType = "가나다라";
 unknownType = true;
 // any타입과 unknown타입은 기본적으로 모든 타입을 해당 변수에 입력 할수 있지만,
 // 다른 타입의 변수에 할당 할때 차이점 이 생김 -> any O, unknown X
-// let testNumber2: number = unknownType;
+let testNumber2: number = unknownType as number;
 // let testString2: string = unknownType;
 // let testBolean2: boolean = unknownType;
 

@@ -53,6 +53,7 @@ function runWork2() {
   }
 }
 console.log(runWork2() === doneState);
+
 /**
  * 위의 코드에서 한단계를 더 나아가면 enum이 된다.(?) 
  * enum 사용시 첫 식별자는 대문자로 많이(?) 사용한다.

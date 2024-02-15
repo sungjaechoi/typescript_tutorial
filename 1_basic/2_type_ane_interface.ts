@@ -4,7 +4,7 @@
 
 /**
  * Type
- *
+ * => 타입 시작은 대문자!!
  * 타입은 쉽게 말해서 TS 타입에 이름을 지어주는 역활을 한다.
  */
 
@@ -114,3 +114,39 @@ interface IdolOptional {
 const yujin4 : IdolOptional = {
   name: '안유진'
 }
+
+type Address = {
+  city : string;
+  dong : string;
+}
+
+type Credit = {
+  grade : string;
+  score : number;
+}
+
+type Person = {
+  name : string;
+  age : number;
+  job : string;
+  address:Address 
+  credit : Credit
+}
+
+const 사람 = {
+  나이 : 20,
+  직업 : '개발자',
+  주소 : {
+    도시 : '서울',
+    동 : '신림'
+  },
+  신용정보 : {
+    신용등급 : 'A',
+    신용점수 : 1000
+  }
+}
+
+type Test = Person["address"]
+
+//"사람"이라는 값을 타입으로 캐스팅 => typeof -> 자바스크립트의 typeof가 아님
+type Test2 = typeof 사람;
