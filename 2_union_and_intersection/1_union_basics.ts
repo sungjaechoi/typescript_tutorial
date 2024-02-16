@@ -30,13 +30,13 @@ exampleValue2 = '아이브코리아';
 // exampleValue2 = 'IVE코리아';
 
 /**
- * 리스트의 유니언
+ * 배열의 유니언
  * 
  */
 
-//1. string[]으로 또는 boolean[]으로 구성된 리스트
-//* => 정확히 어떤 타입으로 구성된 리스트 또는 다른 타입으로 구성된 리스트를 원한다면
-//*    타입 앞에 리스트표시가 될수 있도록 독립된 타입을 유니언으로 나누어 주어야 한다. => string[] | boolean[];
+//1. string[]으로 또는 boolean[]으로 구성된 배열
+//* => 정확히 어떤 타입으로 구성된 배열 또는 다른 타입으로 구성된 배열를 원한다면
+//*    타입 앞에 배열표시가 될수 있도록 독립된 타입을 유니언으로 나누어 주어야 한다. => string[] | boolean[];
 type stringListOrBooleanList = string[] | boolean[];
 
 //2. "string[]"으로 구성되어 있기 떄문에 string[]으로 할당 할 수 있다.
@@ -58,13 +58,14 @@ strListOrBooleanList = [
 // strListOrBooleanList = ['아이유', true];
 
 
-//5. 4번의 타입을 만족하는 리스트를 만들기 위해서는 아래와 같이 타입선언을 해야 한다.
-//* =>"StrOrNumberList" 타입은 string 과 number을 만족시키는 리스트 이다.
-//*   리스트를 표현해주는 대괄호([])앞에 "(type | type | ...)"을 넣어주면 된다.
-type StrOrNumberList = (string | number)[]
-    
+//5. 4번의 타입을 만족하는 배열를 만들기 위해서는 아래와 같이 타입선언을 해야 한다.
+//* =>"StrOrNumberList" 타입은 string 과 number을 만족시키는 배열 이다.
+//*   배열를 표현해주는 대괄호([])앞에 "(type | type | ...)"을 넣어주면 된다.
+// type StrOrNumberList = (string | number)[]
+//? 다른 방식의 선언
+type StrOrNumberList = Array<string | number>
 
-//!5-1. 4번의 결과와 달리 string,number로 리스트 구성이 가능하다.
+//!5-1. 4번의 결과와 달리 string,number로 배열 구성이 가능하다.
 let stringOrNumberList: StrOrNumberList = [
   '아이브',
   1,
@@ -76,6 +77,9 @@ stringOrNumberList = [1,2,3]
 
 //5-3. string[]로 재할당 가능
 stringOrNumberList = ['아이유','김고은','박소담']
+
+//? 스트링으로 이루어진 배열인데 원소개 3개
+type StringArray = [string,string,string]
 
 /**
  * Interface로 사용하는 union
@@ -158,8 +162,8 @@ animalOrHuman2 = {
 }
 
 //! type 선언의 차이로 인한 에러메시지 가독성 차이 
-//console.log(animalOrHuman.address)
-//console.log(animalOrHuman2.address)
+// console.log(animalOrHuman.address)
+// console.log(animalOrHuman2.address)
 
 
 /**
@@ -189,7 +193,7 @@ type PersonOrCat = Person | Cat;
 // * 하지만 Person과 Cat에서 프러퍼티를 "하나씩" 지우면 어느 타입에서 속하지 못하기 때문에 에러가 발생한다
 const personOrCat: PersonOrCat = {
   // name: '최성재',
-  // age: '34',
+  age: '34',
   breed: '코리안숏헤어',
   country: '대한민국'
 }
