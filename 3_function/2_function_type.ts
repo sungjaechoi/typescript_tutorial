@@ -35,6 +35,7 @@ const mulitplyTwoNumber: MultiplyTwoNumber = (x, y) => {
 
 /** 
  * Interface로 함수 타입 선언하기
+//! 절대 interface로 함수를 선언하지마라 !!!
  */
 
 //? 함수타입 정의시 type과 interface의 차이

@@ -87,6 +87,7 @@ console.log(getInfiniteParameters("아이유", "아이브", "블랙핑크"));
 
 //1
 //* TS의 return 추론
+//!! 실제로 가급적 return은 붙이지 않는다. 단, 확인은 하자!
 function addTwoNumbers(x: number, y: number) {
   return x + y;
 }
@@ -134,9 +135,21 @@ const subtractTwoNumberArrow = (x: number, y: number): number => {
  */
 
 //void : 아무것도 없다.
+
 //* 반환값이 없을시 타입 명시 - void
 function doNotReturn():void{
   console.log('저는 반환을 하지 않습니다.')
+}
+
+//! undifined 가 결국 void
+//? 나는 undifined를 반환한적이 없다 = void
+
+const a = doNotReturn()
+
+if(a === undefined){
+  console.log(a)
+}else{
+  console.log(a)
 }
 
 //* 만약 반환값을 void로 설정후 반환하면 에러가 출력된다.
@@ -154,6 +167,8 @@ doNotReturn()
 
 
 //never : 어떤값도 저장되거나 반환되지 않을때 사용
+//!!! 거의 쓸일없음 = 존재여부와, 왜 있는지 여부만 알면된다. = 타입체커 입장에는 타입을 추론하기위해 꼭 있어야하는 존재
+
 //* 반환타입이 never가 되려면 반환하는 상황 자체가 생기면 안된다.
 //! 즉, 함수가 끝나지 않는 상태를 만들어야 한다.
 

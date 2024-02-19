@@ -29,7 +29,7 @@
  */
 
 // 1) Assignment Narrowing:
-//* - 특정 값을 할당해서 타입이 좁아짐
+//* - 특정 값을 할당에 관점에서 타입이 좁아짐
 
 //1. number와 string 포함하는 타입 선언 -> 값은 string타입의 값을 할당.
 let numberOrString: number | string = "code Factory";
@@ -44,6 +44,14 @@ numberOrString;
 //? .toFixed(num) => num의 소수점 자리의 index를 인자로 넣고 반올림하는 number 메서드
 // console.log(numberOrString.toFixed(2));
 
+//! "test" 함수 입장에서는 (a: number | string) 둘줄에 하나가 들어올 수 있음
+const test = (a : number|string):void=>{
+  console.log(a)
+}
+
+test(numberOrString)
+test(1)
+
 /**
  * 2) typeof Narrowing
 //* - 타입검사로 타입이 좁아짐
@@ -55,9 +63,9 @@ numberOrString;
 let num = 10;
 type NumberType = typeof num;
 
+//? Math.random():0부터 1사이에 소수점 랜덤 값이 반환됨
 //! 런타임에 " Math.random()"함수가 실행되고 컴파일 시점에는 string인지 number인지
 //! 알수 없기 때문에 TS는 "string | number"로 추론한다.
-//? Math.random():0부터 1사이에 소수점 랜덤 값이 반환됨
 numberOrString = Math.random() > 0.5 ? 1123 : "아이유";
 
 // typeof를 통해서 런타임시 스트링이라면 true = string, false = number
@@ -75,6 +83,8 @@ if (typeof numberOrString == "string") {
 
 let nullOrString: null | string[] =
   Math.random() > 0.5 ? null : ["아이유", "레드벨벳"];
+
+  //TODO Null 이 자연 스러워져야함!
 
 //* false가 나오는 값을 타입 typeof없이 체크 하는 방법
 //! null은 javascript에서 false로 체크 하기 떄문에 if문의 "nullOrString"은 false로 체크되고 else로 넘어간다.
@@ -96,6 +106,7 @@ let stringOrBool2: string | boolean = Math.random() > 0.5 ? "아이브" : true;
 //! 자바스크립트 기준(=런타임)으로 '아이유'와 '아이브'의 값이 같을수 없기 떄문에 true를 반환 할수 없지만
 //! 타입스크립트 기준(=컴파일)으로 서로다른 타입을 비교하였기 떄문에 타입 추론이 된다.
 //TODO 질문  - 근데 이게 의미가 있는건가? 내로잉 된건 맞는데 무슨의미지? => 타입이 이렇게 추론될수 있다 말고 실제로 타입이 좁아지는 의미가 있는건가? 어떻게 써먹지?
+//? => 사용할수 있는 방법은 타입이 서로다른 변수가 존재 할때 두개의 타입이 서로같은경우 몬가 할수 있다!
 //? **타입이 좁아지는 것을 보여주기위한 예제**
 if (numberOrstring2 === stringOrBool2) {
   numberOrstring2;
@@ -121,6 +132,7 @@ if (typeof numberOrStringOrNull === "number") {
 
 /**
  * 5) in operator(:연산자) Narrowing
+ //! 자주사용!!! 
  //* - in 연산자는 객체의 프로퍼티 키값이 존재 여부를 boolean으로 반환
  */
 
@@ -259,10 +271,10 @@ interface Dog3 {
 }
 
 //TODO 추가 된 interface
-interface Fish {
-  type: "fish";
-  length: number;
-}
+// interface Fish {
+//   type: "fish";
+//   length: number;
+// }
 
 //! 수정시 주석
 type HumanOrDog3 = Human3 | Dog3;
