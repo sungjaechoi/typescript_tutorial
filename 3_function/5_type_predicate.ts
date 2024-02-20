@@ -56,7 +56,7 @@ function isDoge(animal: DogeOrCat):animal is Doge{
   //? 타입단언을 사용하는 이유 
   // 인자로 DogeOrCat의 타입이 선언된 변수을 가져온다
   //* 현재 타입은 Doge 또는 Cat(DogeOrCat) 이기 때문에 서로 다른 프러퍼터인 age, breed에 접근할수 없다.
-  // return animal.
+  //return animal.
   //! 매개변수 animal에 age가 있는지 확인하기 위해서 인자 animal의 타입을 Doge타입으로 단언하고 age의 프러퍼티에 접근하고
   //! 해당 인자가 age를 가지고 있는지 확인한다.
   return (animal as Doge).age !== undefined

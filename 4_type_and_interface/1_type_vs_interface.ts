@@ -10,6 +10,7 @@
 //객체 선언의 차이
 //* interface
 //TODO 질문? - interface을 선언할때 첫글자 대문자로 선언하는 방식이 좋은가?
+//* 일반적으로 type과 interfac의 첫글자는 대문자로 시작한다.
 interface IObject {
   x: number;
   y: number;
@@ -77,7 +78,6 @@ interface IRectangle {
 
 interface IRectangle {
   width: number;
-  height: number;
 }
 
 //?Test

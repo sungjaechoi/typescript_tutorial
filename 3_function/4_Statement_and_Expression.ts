@@ -38,6 +38,11 @@ function divide(x: number, y: number): number {
 //! type선언으로 함수 타입을 정의 하고 변수명만 바꿔서 해당 타입으로 재사용 할수 있다.
 //! 즉, 일일이 타입선언을 해주지 않아도 된다!
 
+//TODO 변수명,타입명 지을떄 고려 사항
+//?연사기 타입은 타입이다 => 그렇기 떄문에 "CalculationType"의 Type은 불용어 이다.
+//* => 그렇기 때문에 겹치는 불용어는 변수명으로 사용하지 않는게 좋다.
+//* 변수명을 줄일수 있음 맥락이 틀리지 않는 선에서 줄이는 것이 좋다. CalculationType => Calc
+
 type CalculationType = (x: number, y: number) => number;
 
 const add2: CalculationType = function (x, y) {
