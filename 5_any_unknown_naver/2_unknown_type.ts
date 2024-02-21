@@ -85,6 +85,7 @@ type anyOrU = any | unknown;
 
 /**
  * Intersection Type
+//! 이렇게 쓸일 없음 사용 금지 !!
 //? Intersection = "primitive & primitive" = never
 //* any를 제외한 모든 타입을 unknown 으로 흡수 된다 
 //! Intersection선언시 흡수당함 

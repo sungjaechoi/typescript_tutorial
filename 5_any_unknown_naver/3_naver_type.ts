@@ -19,7 +19,7 @@ function infiniteLoop(): never{
 }
 
 // (3) 존재 할 수 없는 인터섹션
-//! intersection의 primitive 타입과 primitive타입이 설정되면 naver 타입이 된다.
+//! intersection의 primitive 타입과 primitive타입이 설정되면 naver 타입이 된다. 
 type StringAndNumber = string & number;
 
 // let neverType: never = 10;

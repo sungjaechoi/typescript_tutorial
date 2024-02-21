@@ -3,6 +3,7 @@
  */
 
 // 1. interface의 상속 (= extends)
+//! 상속보다는 확장으로 이해하는것 좋다. = 타입을 확장한다!로 보는것이 좋음
 //* extends키워드로 상속받은 interface의 모든 프로퍼티들은 그대로 사용할수 있다.
 interface IName {
   name: string;
@@ -24,8 +25,9 @@ const idol: IIdol = {
 //* 4. union과 결합 해서 사용 가능
 //! 5. 원시자료형은 이미 하나의 타입이기 때문에 더이상 타입을 추가할 수 없다. => naver 추론 : 존재할수 없는 타입
 
-// 2. 상속과 유사한 type의 intersection(=&)
-//TODO - 질문 -> intersection을 상속으로 봐도 되는가?
+// 2. interface의 확장과 유사한 type의 intersection(=&)
+//TODO - 질문 -> intersection을 상속으로 봐도 되는가? = NO
+//* extends와 마찬가지로 확장한다는 의미로 이해하는것이 받아 들이기 쉽다.
 type TName = {
   name: string;
 };
@@ -55,6 +57,7 @@ const idol3: IIdol2 = {
 };
 
 //* type으로 interface에 intersection을 하는경우
+//! 좋은 방법이 아니다!
 interface IName2 {
   name: string;
 }
@@ -70,7 +73,7 @@ const idol4: TIdol2 = {
 
 /** 
  * extending multiple
-//* 일반적으로 상속은 하나의 클래스만 가능 하지만,
+//* 일반적으로 확장 하나의 클래스만 가능 하지만,
 //! TS은 여러개의 type을 상속 받을수 있다.
  */
 
@@ -117,7 +120,7 @@ const cat: Cat = {
 
 /**
  * Overrding
-
+  //! 안티 패턴 !!
  */
 // 1. type의 intersction의 overrding
 //! intersection의 primitive 타입과 primitive타입이 설정되면 naver 타입이 된다.
