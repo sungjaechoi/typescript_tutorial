@@ -40,3 +40,15 @@ const nabi: Cat = {
   age: 7,
   breed: undefined,
 }
+
+//? optional(=?)을 사용하지 않고 타입을 나눠서 타입가드로 해당 부분을 나누어서 사용할수 있다.
+interface CatHavebreed{
+  name: string;
+  age: number;
+  breed: string
+}
+
+interface Cat2{
+  name: string;
+  age: number;
+}

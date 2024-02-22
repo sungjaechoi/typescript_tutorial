@@ -28,16 +28,17 @@ const codefactory: NestedPerson = {
 
 //* 타입선언
 //* "identity"속성에 타입으로 "TPersonIdentity"을 선언 할수 있다.
+type TPersonIdentity = {
+  name: string;
+  age: number;
+}
+
+//* 타입선언
 type TPerson = {
   identity: TPersonIdentity,
   nationality: string;
 }
 
-//* 타입선언
-type TPersonIdentity = {
-  name: string;
-  age: number;
-}
 
 //? 타입을 한번에 선언 VS 타입을 나눠서 객체의 타입을 선언 = 에러 출력의 차이
 
@@ -46,7 +47,7 @@ type TPersonIdentity = {
 //! 굉장히 복잡 -> 프러퍼티가 많아지면 많아질수록 더 복잡해짐
 const codefactory2: NestedPerson = {
   identity:{
-      // name: '코드팩토리',
+      name: '코드팩토리',
       age: 32,
   },
   nationality: '한국인',
@@ -57,7 +58,7 @@ const codefactory2: NestedPerson = {
 //? 정확히 타입을 가르킴 - 단순
 const iu: TPerson = {
   identity:{
-      // name: '아이유',
+      name: '아이유',
       age: 32,
   },
   nationality: '한국인',
