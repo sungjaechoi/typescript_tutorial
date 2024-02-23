@@ -15,7 +15,7 @@ const dogOrCat = Math.random() > 0.5 ?
     {
         name: '별이',
         age: 12,
-    } :
+    }:
     // 고양이
     {
         name: '오리',

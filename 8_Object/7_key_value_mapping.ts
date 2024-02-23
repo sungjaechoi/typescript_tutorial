@@ -46,8 +46,9 @@ type UserApiStatus2 = {
 //? in Operator 복습 - 연산자는 객체의 프로퍼티 키값이 존재 여부를 boolean으로 반환
 //* in Operator 타입 맵핑 문법
 //* type InMapping = {[k(식별자) in keytype  ]: valuType}
+//? 여기서 in 식별자는 ts의 in
 type Keys = "a" | "b";
-type NewType = { [K in Keys]: string };
+type NewType = {[K in Keys]: string};
 
 //* GlobalApiStatus의 key를 하나씩 union으로선한하면 식별자 K에 key가 들어가게 되어
 //* 아래 주석처리된 key만 적는 것과 같습니다.
@@ -64,7 +65,11 @@ type UserApiStatus3 = {
 //? pick - 기존 타입에서 몇 개의 프로퍼티를 선택하여 새로운 타입을 구성 하는 TypeScript의 유틸리티
 //? 문법 : Pick<Type, Keys> 
 //? Type: 선택할 기존 타입, Keys: 선택하고자 하는 프로퍼티의 key -> 다수의 key 작성시 union으로 연결
-type PickedUserApiStatus = Pick<GlobalApiStatus, 'getUser' | 'banUser' | 'paginateUsers'>;
+//! 'getUser' | 'banUser' | 'paginateUsers' => type으로 선언해서 하는게 더 좋음 !!
+type GlobalApiProperte = 'getUser' | 'banUser' | 'paginateUsers'
+type PickedUserApiStatus = Pick<GlobalApiStatus, GlobalApiProperte>;
+type PickedUserApiStatus2 = Pick<GlobalApiStatus, 'getUser' | 'banUser' | 'paginateUsers'>;
+
 //? Omit - 기존 타입에서 특정 프로퍼티를 제외한 새로운 타입을 생성 하는 TypeScript의 유틸리티
 //? 문법 : Pick<Type, Keys> 
 //? Type: 제외할 기존 타입, Keys: Type에서 제외하고자 하는 프로퍼티의 key -> 다수의 key 작성시 union으로 연결
@@ -104,7 +109,7 @@ type KeyOfUserApiStatus2 = {
 // 객체 타입 optional 만들기
 type KeyOfUserApiStatus3 = {
   [k in Exclude<keyof GlobalApiStatus, 'getPosts'>]?: GlobalApiStatus[k];
-}
+}&{aa?: number}
 
 
 //* 객체 타입이 선언 되어 있을때 그중 중복되는 프로퍼티로 union 만들기
