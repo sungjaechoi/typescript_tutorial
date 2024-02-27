@@ -4,10 +4,10 @@
 class BaseCache<T>{
   data: T[] = [];
 }
+//! 예제가 이상함 - class를 extends한다는 의미는 "상속"의 의미고 지금 예제는 의미가 없다.
+class StringCache extends BaseCache<string>{}
 
-class StringCache extends BaseCache<string>{ }
-
-const stringCache = new StringCache();
+const stringCache = new BaseCache<number>();
 stringCache.data;
 
 //* 자식 클래스에서 부모클래스의 제네릭을 받아서 넘겨줄수 있음
@@ -33,6 +33,7 @@ interface BaseGeneric {
 
 //* BaseGeneric 제네릭이 제공해주는 Name 프러퍼터가 있는 타입을 따라줘야 함
 //* gneric을 extends 하면 구조를 강제 할수 있다.
+//! name: string; 충족하는 객체 !!
 class Idol<T extends BaseGeneric>{
   information: T;
 
@@ -59,6 +60,9 @@ const testObj = {
 
 //* generic O라는 객체(인자로 들어오는 객체의)의 generic O의 key를 generic K에 저장 한다.
 //? K는 어떤 구조를 강제 할껀데 O라는 객체의 key 속성으로 이루어진 유니언 으로
+//! 1) keyof O 부터 딴다.
+//! 2) 1번을 충족하는게 K이다.
+//! 3) 1번은 a,b,c고 K는 a,b,c를 만족해야 한다.
 function objectParser<O, K extends keyof O>(obj: O, key: K) {
   return obj[key];
 }

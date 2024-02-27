@@ -15,8 +15,10 @@ const cache1: Cache<string> = {
 }
 
 //* 함수는 암시적 타입 추론이 가능하지만 interface는 불가능
+//? 함수의 값수준에서는 암시적으로 사용 가능 하지만,
+//? 타입의 입장에서는 타입을 명시하지 않으면 타입 인자를 필요로 한다.
 //! 명시적으로 사용해야하며 생략시 에러 
-// const cach2_1: Cache<> = {
+// const cach2_1: Cache = {
 //     data: [123, 456],
 //     lastUpdate: new Date(),
 // }

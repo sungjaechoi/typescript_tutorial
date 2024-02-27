@@ -5,6 +5,7 @@
 //* 2. 타입 안전성을 유지하면서도 코드의 유연성을 크게 향상
 //* 3. 타입을 파라미터처럼 함수나 클래스에 전달이 가능
 //! 결론 - 어떤 타입이든 인자를 받고 받은 인자에 따라서 ts가 타입을 추론할 수있게 함 = 재사용성 = 동적?
+//! 사용하는 순간 타입을 지정할꺼임!
  */
 
 //generic ??
@@ -21,13 +22,28 @@ const value = whatValue('test');
 //* 2) 함수 내부에서 generic type를 받아 사용 할꺼라는 명시
 //* 3) generic을 선언하면 타입으로 generic을 사용할수 있음
 //? 보통 Generic에 "T"를 선언해 주는데 의미없이 type에 "T" 이다. => 단순한 식별자이며 보편적으로 한글자로된 대문자로 표기한다.
+//! t를 받아서 t를 내보낸다고 생각하면 안됨 !!
 function genericWhatValue<T>(value: T): T {
   return value;
 }
 
+// function genericWhatValue<T>(value: T):void {
+//   return;
+// }
+
+// function genericWhatValue<T extends string>(value: T):void {
+//   return;
+// }
+
+// function genericWhatValue<T extends 'a' | 'b' | 'c'>(value: T):void { 
+//   return;
+// }
+
+
 //* 함수에서 generic타입을 선언하면 함수의 인자로 반환값의 타입이 어떤 타입이 될것인지 설정 할수 있다.
 //* 함수의 인자가 number로 설정되면 함수 반환 타입은 "number"가 된다.
 //? 반환 타입 설정 시 함수명 뒤 generic 내부에 타입을 적어주면 된다.
+
 
 const genericResult1 = genericWhatValue<number>(123);
 
@@ -50,6 +66,15 @@ function multipleGenerics<X, Y, Z>(x: X, y: Y, z: Z) {
       z,
   }
 }
+
+// function multipleGenerics<X, Y, Z>(x: X, y: Y, z: Z) {
+//   const a = 10;
+//   return {
+//       a,
+//       y,
+//       z,
+//   }
+// }
 
 //* 함수 인자의 타입과 맞게 순서대로 표기 = 인자도 타입순서대로 정의
 //! 순서 변경시 에러

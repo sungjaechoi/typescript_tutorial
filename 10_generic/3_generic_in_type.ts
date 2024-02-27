@@ -24,11 +24,12 @@ interface ErrorState {
 }
 
 //* 사용하는 타입을 지정 가능
-//type State = DoneState<string> | LoadingState | ErrorState;
+// type State = DoneState<string> | LoadingState | ErrorState;
 
 //* 여기서 State의 타입을 사용할떄 DoneState의 타입을 지정 하고 싶은 경우
 //? State에서 타입을지정하면 DonState에 state에서 지정한 타입이 들어간다.
 //* defult 사용도 가능
+//! 비동기 사용시 사용가능한 실무 코드
 type State<T = number> = DoneState<T> | LoadingState | ErrorState;
 
 //* steate의 타입에 strign를 넣어주면 Donestate는 string타입의 배열이 된다.
